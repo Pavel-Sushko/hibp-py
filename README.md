@@ -1,11 +1,11 @@
-# HaveIBeenPwned Parser
+# hibp-py
 
-HaveIBeenPwned Parser is a Python project that allows users to parse breaches from HaveIBeenPwned (HIBP). The project either fetches data from the HIBP API, or interprets files of certain formats, and stores it in a database for easy access and analysis.
+hibp-py is a Python library that facilitates the analysis and tracking of breaches posted to haveibeenpwned.
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/Pavel-Sushko/hibp-tracker.git`
-2. Navigate to the project directory: `cd hibp-tracker`
+1. Clone the repository: `git clone https://github.com/Pavel-Sushko/hibp-py.git`
+2. Navigate to the project directory: `cd hibp-py`
 3. Install the package: `pip install .`
 
 ## Contributing
