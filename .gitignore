@@ -156,3 +156,4 @@ cython_debug/
 .vscode/
 input/*
 !t_*.json
+data/*
