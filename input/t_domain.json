@@ -1,0 +1,51 @@
+{
+	"BreachSearchResults": [
+		{
+			"DomainName": "example.com",
+			"Alias": "jdoe",
+			"Breaches": [
+				{
+					"Title": "Covve",
+					"Name": "db8151dd",
+					"Domain": "covve.com",
+					"BreachDate": "2020-02-20",
+					"AddedDate": "2020-05-15T08:06:11Z",
+					"ModifiedDate": "2020-05-19T20:25:18Z",
+					"PwnCount": 22802117,
+					"Description": "In February 2020, <a href=\"https://www.troyhunt.com/the-unattributable-db8151dd-data-breach\" target=\"_blank\" rel=\"noopener\">a massive trove of personal information referred to as &quot;db8151dd&quot;</a> was provided to HIBP after being found left exposed on a publicly facing Elasticsearch server. Later identified as originating from the Covve contacts app, the exposed data included extensive personal information and interactions between Covve users and their contacts. The data was provided to HIBP by <a href=\"https://dehashed.com/\" target=\"_blank\" rel=\"noopener\">dehashed.com</a>.",
+					"DataClasses": [
+						"Email addresses",
+						"Job titles",
+						"Names",
+						"Phone numbers",
+						"Physical addresses",
+						"Social media profiles"
+					],
+					"IsVerified": true,
+					"IsFabricated": false,
+					"IsSensitive": false,
+					"IsActive": true,
+					"IsRetired": false,
+					"IsSpamList": false,
+					"IsMalware": false,
+					"LogoFileName": "Covve.png"
+				}
+			]
+		}
+	],
+	"PasteSearchResults": [
+		{
+			"DomainName": "example.com",
+			"Alias": "jdoe",
+			"Pastes": [
+				{
+					"Source": "Pastebin",
+					"Id": "QEPkQ9P5",
+					"Title": null,
+					"Date": "2018-03-18T17:55:13Z",
+					"EmailCount": 16415
+				}
+			]
+		}
+	]
+}
