@@ -54,7 +54,6 @@ def get_breaches(account):
 
 
 def get_breach(breach_name):
-
     response = requests.get(
         f'{API["endpoint"]}breach/{breach_name}', headers=API['headers'])
 
