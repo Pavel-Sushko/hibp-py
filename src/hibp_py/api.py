@@ -9,7 +9,7 @@ load_dotenv()
 API = {
     'endpoint': 'https://haveibeenpwned.com/api/v3/',
     'headers': {
-        'User-Agent': 'hibp-parser',
+        'User-Agent': 'hibp-py',
         'hibp-api-key': os.getenv('API_KEY')
     }
 }
@@ -22,6 +22,11 @@ class AuthenticationError(Exception):
 
 class ServerError(Exception):
     """Raised when the server returns an error"""
+    pass
+
+
+class RateLimitError(Exception):
+    """Raised when the rate limit is exceeded"""
     pass
 
 
@@ -40,13 +45,15 @@ def get_breaches(account):
         raise AuthenticationError('Invalid API key')
     elif response.status_code == 404:
         return {}
+    elif response.status_code == 429:
+        raise RateLimitError(
+            'Rate limit exceeded. Please wait and try again later.')
     else:
         raise ServerError(
             f'Server returned error code: {response.status_code}')
 
 
 def get_breach(breach_name):
-
     response = requests.get(
         f'{API["endpoint"]}breach/{breach_name}', headers=API['headers'])
 
