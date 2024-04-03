@@ -7,7 +7,7 @@ packages = ["src/hibp_py"]
 
 [project]
 name = "hibp-py"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
     { name = "Pavel Sushko", email = "github@psushko.com" }
 ]
@@ -15,7 +15,7 @@ description = "Python utility for Have I Been Pwned API"
 readme = "README.md"
 requires-python = ">=3.11"
 classifiers = [
-    "Development Status :: 1 - Planning",
+    "Development Status :: 2 - Pre-Alpha",
     "Environment :: Console",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
@@ -29,7 +29,8 @@ classifiers = [
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11"
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
 
 [project.urls]
