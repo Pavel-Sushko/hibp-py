@@ -20,4 +20,4 @@ If you'd like to contribute to the project, please follow these steps:
 
 ## License
 
-CVE Tracker is licensed under the [MIT License](https://opensource.org/licenses/MIT). Feel free to use it for personal or commercial use.
+hibp-py is licensed under the [MIT License](https://opensource.org/licenses/MIT). Feel free to use it for personal or commercial use.
