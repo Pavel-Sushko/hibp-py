@@ -4,9 +4,9 @@ hibp-py is a Python library that facilitates the analysis and tracking of breach
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/Pavel-Sushko/hibp-py.git`
-2. Navigate to the project directory: `cd hibp-py`
-3. Install the package: `pip install .`
+```bash
+pip install hibp-py
+```
 
 ## Contributing
 
