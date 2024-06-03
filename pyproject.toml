@@ -7,10 +7,8 @@ packages = ["src/hibp_py"]
 
 [project]
 name = "hibp-py"
-version = "0.0.2"
-authors = [
-    { name = "Pavel Sushko", email = "github@psushko.com" }
-]
+version = "0.0.3"
+authors = [{ name = "Pavel Sushko", email = "github@psushko.com" }]
 description = "Python utility for Have I Been Pwned API"
 readme = "README.md"
 requires-python = ">=3.11"
