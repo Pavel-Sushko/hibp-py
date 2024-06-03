@@ -1,7 +1,8 @@
+import hibp_py.api as api
+import hibp_py.args as args
+import hibp_py.db as db
+import hibp_py.mail as mail
 import time
-import api
-import args
-import db
 
 
 def main():
@@ -16,6 +17,7 @@ def main():
         for account in accounts:
             print(f'Checking {account}...')
             success = False
+            new_breaches = []
 
             while not success:
                 try:
@@ -26,16 +28,35 @@ def main():
                     time.sleep(6)
 
             for breach in breaches:
-                time.sleep(6)
 
+                breach_name = breach['Name']
                 success = False
 
                 try:
-                    db.write_breach(account, api.get_breach(breach['Name']))
+                    breach_data = db.get_breach(breach_name)
+
+                    if not breach_data:
+                        while not success:
+                            try:
+                                breach_data = api.get_breach(breach_name)
+                                success = True
+                            except api.RateLimitError as e:
+                                print(f'Rate limit exceeded. Waiting 6 seconds...')
+                                time.sleep(6)
+
+                    if db.write_breach(account, breach_data):
+                        print(f'New breach found: {breach_name}')
+
+                        new_breaches.append(breach_name)
+
                     success = True
                 except api.RateLimitError as e:
                     print(f'Rate limit exceeded. Waiting 6 seconds...')
                     time.sleep(6)
+
+            if new_breaches:
+                mail.send_email(account, mail.create_body(
+                    account, new_breaches))
 
             time.sleep(6)
 
