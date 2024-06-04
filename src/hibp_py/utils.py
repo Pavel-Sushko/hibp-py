@@ -10,7 +10,7 @@ def load_config(path="config.json"):
     Returns:
         dict: Configuration
     """
-    with open(path, 'r') as f:
+    with open(path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
 
