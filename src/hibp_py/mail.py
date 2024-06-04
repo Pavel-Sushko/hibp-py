@@ -1,18 +1,18 @@
 import json
-import os
 import smtplib
-from dotenv import load_dotenv
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from hibp_py.utils import load_config
 
 
-load_dotenv()
+config = load_config()
 
-SERVER = os.getenv('SMTP_SERVER')
-PORT = os.getenv('SMTP_PORT')
-FROM_EMAIL = os.getenv('FROM_EMAIL')
-TEST_RECIPIENT = os.getenv('TEST_RECIPIENT')
-SUBJECT = os.getenv('SUBJECT')
+
+SERVER = config['SMTP_SERVER']
+PORT = config['SMTP_PORT']
+FROM_EMAIL = config['FROM_EMAIL']
+TEST_RECIPIENT = config['TEST_RECIPIENT']
+SUBJECT = config['SUBJECT']
 
 
 def send_email(email, body):

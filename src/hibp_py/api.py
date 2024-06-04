@@ -1,16 +1,14 @@
 import os
 import requests
-from dotenv import load_dotenv
+from hibp_py.utils import load_config
 
-
-load_dotenv()
-
+config = load_config()
 
 API = {
     'endpoint': 'https://haveibeenpwned.com/api/v3/',
     'headers': {
         'User-Agent': 'hibp-py',
-        'hibp-api-key': os.getenv('API_KEY')
+        'hibp-api-key': config['API_KEY']
     }
 }
 
