@@ -69,8 +69,7 @@ def create_body(email, breachNames):
             breach = breaches[breachName]
 
             if breach['Domain']:
-                breaches_list += f'<li><a href="https://{
-                    breach["Domain"]}">{breach["Title"]}</a></li>'
+                breaches_list += f'<li><a href="https://{breach["Domain"]}">{breach["Title"]}</a></li>'
             else:
                 breaches_list += f'<li>{breach["Title"]}</li>'
 
