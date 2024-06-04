@@ -155,7 +155,6 @@ cython_debug/
 # Custom Directories and Files to be ignored
 .vscode/
 input/*
-!t_*.json
 data/*
 
 # Snyk
