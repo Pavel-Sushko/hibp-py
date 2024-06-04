@@ -1,3 +1,5 @@
+![pypi version](https://github.com/Pavel-Sushko/hibp-py/actions/workflows/python-publish.yml/badge.svg) ![python application](https://github.com/Pavel-Sushko/hibp-py/actions/workflows/python-app.yml/badge.svg) ![dependency review](https://github.com/Pavel-Sushko/hibp-py/actions/workflows/dependency-review.yml/badge.svg)
+
 # hibp-py
 
 hibp-py is a Python library that facilitates the analysis and tracking of breaches posted to haveibeenpwned.
