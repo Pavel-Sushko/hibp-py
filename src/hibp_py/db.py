@@ -1,4 +1,5 @@
 import json
+import os
 
 
 DATA_DIR = './data'
@@ -15,11 +16,12 @@ def get_account_breaches(account):
     Returns:
         list: A list of breach names
     """
-    with open(USERS_FILE, 'r', encoding='latin-1') as f:
-        data = json.load(f)
+    if os.path.isfile(USERS_FILE):
+        with open(USERS_FILE, 'r', encoding='latin-1') as f:
+            data = json.load(f)
 
-    if account in data:
-        return data[account]
+        if account in data:
+            return data[account]
 
     return []
 
@@ -33,11 +35,13 @@ def get_breach(breach_name):
     Returns:
         dict: The breach data
     """
-    with open(BREACHES_FILE, 'r', encoding='latin-1') as f:
-        data = json.load(f)
 
-    if breach_name in data:
-        return data[breach_name]
+    if os.path.isfile(BREACHES_FILE):
+        with open(BREACHES_FILE, 'r', encoding='latin-1') as f:
+            data = json.load(f)
+
+        if breach_name in data:
+            return data[breach_name]
 
     return {}
 
@@ -54,8 +58,14 @@ def write_breach(user, breach):
     """
     new_breach = False
 
-    with open(USERS_FILE, 'r', encoding='latin-1') as f:
-        users = json.load(f)
+    if not os.path.isdir(DATA_DIR):
+        os.makedirs(DATA_DIR)
+
+    if os.path.isfile(USERS_FILE):
+        with open(USERS_FILE, 'r', encoding='latin-1') as f:
+            users = json.load(f)
+    else:
+        users = {}
 
     if user not in users:
         new_breach = True
@@ -67,8 +77,11 @@ def write_breach(user, breach):
     with open(USERS_FILE, 'w', encoding='latin-1') as f:
         json.dump(users, f, sort_keys=True)
 
-    with open(BREACHES_FILE, 'r', encoding='latin-1') as f:
-        data = json.load(f)
+    if os.path.isfile(BREACHES_FILE):
+        with open(BREACHES_FILE, 'r', encoding='latin-1') as f:
+            data = json.load(f)
+    else:
+        data = {}
 
     if breach['Name'] not in data:
         data[breach['Name']] = breach
