@@ -7,7 +7,7 @@ packages = ["src/hibp_py"]
 
 [project]
 name = "hibp-py"
-version = "1.0.1"
+version = "1.1.0"
 dependencies = ["python-dotenv", "requests"]
 authors = [{ name = "Pavel Sushko", email = "github@psushko.com" }]
 description = "Python utility for Have I Been Pwned API"
