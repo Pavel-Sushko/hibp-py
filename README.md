@@ -4,7 +4,7 @@ hibp-py is a Python library that facilitates the analysis and tracking of breach
 
 ## Installation
 
-1. Install from pip: `pip install hibp-py`
+1. Install from pip: `python -m pip install hibp-py`
 
 ## Basic Usage
 
