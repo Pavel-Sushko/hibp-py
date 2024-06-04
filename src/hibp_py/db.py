@@ -58,6 +58,9 @@ def write_breach(user, breach):
     """
     new_breach = False
 
+    if not os.path.isdir(DATA_DIR):
+        os.makedirs(DATA_DIR)
+
     if os.path.isfile(USERS_FILE):
         with open(USERS_FILE, 'r', encoding='latin-1') as f:
             users = json.load(f)
