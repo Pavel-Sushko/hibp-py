@@ -156,6 +156,7 @@ cython_debug/
 .vscode/
 input/*
 data/*
+config.json
 
 # Snyk
 snyk-linux
