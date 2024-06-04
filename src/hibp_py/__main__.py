@@ -2,6 +2,7 @@ import hibp_py.api as api
 import hibp_py.args as args
 import hibp_py.db as db
 import hibp_py.mail as mail
+import hibp_py.utils as utils
 import time
 
 
@@ -62,4 +63,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except:
+        utils.log_error('An error occurred')
+        raise
