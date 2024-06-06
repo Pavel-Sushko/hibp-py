@@ -24,7 +24,8 @@ def send_email(email, body):
         email (str): The recipient's email address
         body (str): The email body
     """
-    email = TEST_RECIPIENT  # TODO: Remove this line once tests are done
+    if TEST_RECIPIENT:
+        email = TEST_RECIPIENT
 
     message = MIMEMultipart('alternative')
     message['Subject'] = SUBJECT
@@ -69,7 +70,8 @@ def create_body(email, breachNames):
             breach = breaches[breachName]
 
             if breach['Domain']:
-                breaches_list += f'<li><a href="https://{breach["Domain"]}">{breach["Title"]}</a></li>'
+                breaches_list += f'<li><a href="https://{
+                    breach["Domain"]}">{breach["Title"]}</a></li>'
             else:
                 breaches_list += f'<li>{breach["Title"]}</li>'
 
