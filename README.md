@@ -1,3 +1,5 @@
+![python versions](https://img.shields.io/pypi/pyversions/hibp-py.svg?logo=python&logoColor=white) ![package versions](https://img.shields.io/pypi/v/hibp-py.svg)
+
 ![pypi version](https://github.com/Pavel-Sushko/hibp-py/actions/workflows/python-publish.yml/badge.svg) ![python application](https://github.com/Pavel-Sushko/hibp-py/actions/workflows/python-app.yml/badge.svg) ![dependency review](https://github.com/Pavel-Sushko/hibp-py/actions/workflows/dependency-review.yml/badge.svg)
 
 # hibp-py
