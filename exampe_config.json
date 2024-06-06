@@ -4,6 +4,6 @@
 	"SMTP_PORT": 25,
 	"FROM_NAME": "no-reply",
 	"FROM_EMAIL": "no-reply@example.com",
-	"TEST_RECIPIENT": "test@example.com",
+	"TEST_RECIPIENT": "test@example.com", // Leave empty to send emails to affected users
 	"SUBJECT": "New Breach Notification"
 }
