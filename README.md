@@ -1,10 +1,33 @@
+![python versions](https://img.shields.io/pypi/pyversions/hibp-py.svg?logo=python&logoColor=white) ![package versions](https://img.shields.io/pypi/v/hibp-py.svg)
+
+![pypi version](https://github.com/Pavel-Sushko/hibp-py/actions/workflows/python-publish.yml/badge.svg) ![python application](https://github.com/Pavel-Sushko/hibp-py/actions/workflows/python-app.yml/badge.svg) ![dependency review](https://github.com/Pavel-Sushko/hibp-py/actions/workflows/dependency-review.yml/badge.svg)
+
 # hibp-py
 
 hibp-py is a Python library that facilitates the analysis and tracking of breaches posted to haveibeenpwned.
 
 ## Installation
 
-1. Install from pip: `pip install hibp-py`
+1. Install from pip: `python -m pip install hibp-py`
+
+## Basic Usage
+
+```bash
+$ python -m hibp_py -h
+Welcome to HIBP Python!
+usage: __main__.py [-h] [-iL INPUT_LIST] [-o OUTPUT] [-D ACTIVE_DIRECTORY] [-e EMAIL_CONFIG]
+
+options:
+  -h, --help            show this help message and exit
+  -iL INPUT_LIST, --input-list INPUT_LIST
+                        Input list of emails or haveibeenpwned JSON file
+  -o OUTPUT, --output OUTPUT
+                        Output file name
+  -D ACTIVE_DIRECTORY, --active-directory ACTIVE_DIRECTORY
+                        Active Directory domain
+  -e EMAIL_CONFIG, --email-config EMAIL_CONFIG
+                        Email configuration file
+```
 
 ## Contributing
 

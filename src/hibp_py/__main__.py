@@ -7,6 +7,15 @@ import time
 
 
 def main():
+    config = utils.load_config()
+    logger = utils.Logger()
+
+    if 'LOG_PATH' in config:
+        logger.__setattr__('path', config['LOG_PATH'])
+
+    if 'ROTATION_SIZE' in config:
+        logger.__setattr__('rotation_size', config['ROTATION_SIZE'])
+
     print('Welcome to HIBP Python!')
 
     arguments = args.parse_args()
@@ -16,7 +25,7 @@ def main():
             accounts = f.read().splitlines()
 
         for account in accounts:
-            print(f'Checking {account}...')
+            logger.log_event(f'Checking {account}...', 'INFO')
             success = False
             new_breaches = []
 
@@ -25,7 +34,7 @@ def main():
                     breaches = api.get_breaches(account)
                     success = True
                 except api.RateLimitError as e:
-                    print(f'Rate limit exceeded. Waiting 6 seconds...')
+                    utils.handle_rate_limit(logger)
                     time.sleep(6)
 
             for breach in breaches:
@@ -42,18 +51,18 @@ def main():
                                 breach_data = api.get_breach(breach_name)
                                 success = True
                             except api.RateLimitError as e:
-                                print(f'Rate limit exceeded. Waiting 6 seconds...')
+                                utils.handle_rate_limit(logger)
                                 time.sleep(6)
 
                     if db.write_breach(account, breach_data):
-                        print(f'New breach found: {breach_name}')
+                        logger.log_event(
+                            f'New breach found: {breach_name}', 'BREACH')
 
                         new_breaches.append(breach_name)
 
                     success = True
                 except api.RateLimitError as e:
-                    print(f'Rate limit exceeded. Waiting 6 seconds...')
-                    time.sleep(6)
+                    utils.handle_rate_limit(logger)
 
             if new_breaches:
                 mail.send_email(account, mail.create_body(

@@ -2,6 +2,7 @@ import json
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.utils import formataddr
 from hibp_py.utils import load_config
 
 
@@ -10,9 +11,12 @@ config = load_config()
 
 SERVER = config['SMTP_SERVER']
 PORT = config['SMTP_PORT']
+FROM_NAME = config['FROM_NAME']
 FROM_EMAIL = config['FROM_EMAIL']
-TEST_RECIPIENT = config['TEST_RECIPIENT']
 SUBJECT = config['SUBJECT']
+
+if 'TEST_RECIPIENT' in config.keys():
+    TEST_RECIPIENT = config['TEST_RECIPIENT']
 
 
 def send_email(email, body):
@@ -22,11 +26,12 @@ def send_email(email, body):
         email (str): The recipient's email address
         body (str): The email body
     """
-    email = TEST_RECIPIENT  # TODO: Remove this line once tests are done
+    if TEST_RECIPIENT:
+        email = TEST_RECIPIENT
 
     message = MIMEMultipart('alternative')
     message['Subject'] = SUBJECT
-    message['From'] = FROM_EMAIL
+    message['From'] = formataddr((FROM_NAME, FROM_EMAIL))
     message['To'] = email
 
     message.attach(MIMEText(body, 'html'))
@@ -67,7 +72,8 @@ def create_body(email, breachNames):
             breach = breaches[breachName]
 
             if breach['Domain']:
-                breaches_list += f'<li><a href="https://{breach["Domain"]}">{breach["Title"]}</a></li>'
+                breaches_list += f'<li><a href="https://{breach["Domain"]}"' + \
+                    f'>{breach["Title"]}</a></li>'
             else:
                 breaches_list += f'<li>{breach["Title"]}</li>'
 
