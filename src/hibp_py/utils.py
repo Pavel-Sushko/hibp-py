@@ -24,8 +24,9 @@ def handle_rate_limit(logger):
 
 
 class Logger:
-    def __init__(self, path="events.log"):
+    def __init__(self, path="events.log", rotation_size=1000):
         self.path = path
+        self.rotation_size = rotation_size
 
     def log_event(self, event, severity="INFO"):
         """Log an event to a file
@@ -39,7 +40,7 @@ class Logger:
         print(event_str)
 
         with open(self.path, 'r+', encoding='utf-8') as f:
-            if len(f.readlines()) >= 1000:
+            if len(f.readlines()) >= self.rotation_size:
                 self.rotate()
 
             f.write(event_str + '\n')
