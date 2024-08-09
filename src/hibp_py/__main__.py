@@ -8,11 +8,13 @@ import time
 
 def main():
     config = utils.load_config()
+    logger = utils.Logger()
 
-    if 'LOG_PATH' in config.keys():
-        logger = utils.Logger(config['LOG_PATH'])
-    else:
-        logger = utils.Logger()
+    if 'LOG_PATH' in config:
+        logger.__setattr__('path', config['LOG_PATH'])
+
+    if 'ROTATION_SIZE' in config:
+        logger.__setattr__('rotation_size', config['ROTATION_SIZE'])
 
     print('Welcome to HIBP Python!')
 
