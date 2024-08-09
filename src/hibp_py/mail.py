@@ -13,8 +13,10 @@ SERVER = config['SMTP_SERVER']
 PORT = config['SMTP_PORT']
 FROM_NAME = config['FROM_NAME']
 FROM_EMAIL = config['FROM_EMAIL']
-TEST_RECIPIENT = config['TEST_RECIPIENT']
 SUBJECT = config['SUBJECT']
+
+if 'TEST_RECIPIENT' in config.keys():
+    TEST_RECIPIENT = config['TEST_RECIPIENT']
 
 
 def send_email(email, body):
@@ -70,7 +72,8 @@ def create_body(email, breachNames):
             breach = breaches[breachName]
 
             if breach['Domain']:
-                breaches_list += f'<li><a href="https://{breach["Domain"]}">{breach["Title"]}</a></li>'
+                breaches_list += f'<li><a href="https://{breach["Domain"]}"' + \
+                    f'>{breach["Title"]}</a></li>'
             else:
                 breaches_list += f'<li>{breach["Title"]}</li>'
 
