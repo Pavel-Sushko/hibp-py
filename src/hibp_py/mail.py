@@ -15,9 +15,6 @@ FROM_NAME = config['FROM_NAME']
 FROM_EMAIL = config['FROM_EMAIL']
 SUBJECT = config['SUBJECT']
 
-if 'TEST_RECIPIENT' in config.keys():
-    TEST_RECIPIENT = config['TEST_RECIPIENT']
-
 
 def send_email(email, body):
     """Send an email
@@ -26,8 +23,8 @@ def send_email(email, body):
         email (str): The recipient's email address
         body (str): The email body
     """
-    if TEST_RECIPIENT:
-        email = TEST_RECIPIENT
+    if 'TEST_RECIPIENT' in config.keys():
+        email = config['TEST_RECIPIENT']
 
     message = MIMEMultipart('alternative')
     message['Subject'] = SUBJECT
