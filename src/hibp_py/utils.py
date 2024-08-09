@@ -39,7 +39,7 @@ class Logger:
         print(event_str)
 
         with open(self.path, 'r+', encoding='utf-8') as f:
-            if len(f.readlines()) >= 10:
+            if len(f.readlines()) >= 1000:
                 self.rotate()
 
             f.write(event_str + '\n')
