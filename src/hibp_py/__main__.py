@@ -8,6 +8,7 @@ import time
 
 def main():
     config = utils.load_config()
+
     if 'LOG_PATH' in config.keys():
         logger = utils.Logger(config['LOG_PATH'])
     else:
