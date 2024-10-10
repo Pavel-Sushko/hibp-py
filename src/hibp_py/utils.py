@@ -41,23 +41,26 @@ class Logger:
 
         with open(self.path, 'r+', encoding='utf-8') as f:
             if len(f.readlines()) >= self.rotation_size:
-                self.rotate()
+                self.rotate(f)
 
             f.write(event_str + '\n')
 
-    def rotate(self):
-        """Rotate the log file"""
+    def rotate(self, file):
+        """Rotate the log file
+
+        Args:
+            file (file): File object
+        """
+
         file_path_no_ext = self.path.split('.')[0]
 
-        # Rename the current log file to events.log.<number>
         for i in range(9, -1, -1):
             path = f'{file_path_no_ext}{i > 0 and f".{i}" or ""}.log'
 
             if os.path.exists(path):
                 os.rename(path, f'{file_path_no_ext}.{i + 1}.log')
 
-        with open(self.path, 'w', encoding='utf-8') as f:
-            f.write('')
+        file.write('')
 
 
 if __name__ == "__main__":
