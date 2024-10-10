@@ -1,7 +1,6 @@
 import datetime
 import json
 import os
-import time
 
 
 def load_config(path="config.json"):
@@ -26,7 +25,7 @@ def handle_rate_limit(logger):
 class Logger:
     def __init__(self, path="events.log", rotation_size=1000):
         self.path = path
-        self.rotation_size = rotation_size
+        self.rotation_size = rotation_size  # Rotate after this many lines
 
     def log_event(self, event, severity="INFO"):
         """Log an event to a file
@@ -59,13 +58,16 @@ class Logger:
         """Rotate the log file"""
         file_path_no_ext = self.path.split('.')[0]
 
+        # Rename the existing log files in reverse order (9 -> 10, 8 -> 9, etc.)
         for i in range(9, -1, -1):
             path = f'{file_path_no_ext}{i > 0 and f".{i}" or ""}.log'
 
             if os.path.exists(path):
                 os.rename(path, f'{file_path_no_ext}.{i + 1}.log')
 
-        file.write('')
+        # Create a new empty log file after rotation
+        with open(self.path, 'w', encoding='utf-8') as f:
+            f.write('')
 
 
 if __name__ == "__main__":
