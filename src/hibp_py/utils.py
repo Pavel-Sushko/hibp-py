@@ -36,14 +36,24 @@ class Logger:
             severity (str, optional): Severity of the event. Defaults to "INFO".
         """
         event_str = f'{datetime.datetime.now()} [{severity}] {event}'
-
         print(event_str)
 
-        with open(self.path, 'r+', encoding='utf-8') as f:
-            if len(f.readlines()) >= self.rotation_size:
-                self.rotate()
+        # Check if we need to rotate the log file before opening it
+        if self.should_rotate():
+            self.rotate()
 
+        # Log the event after rotation (if needed)
+        with open(self.path, 'a', encoding='utf-8') as f:
             f.write(event_str + '\n')
+
+    def should_rotate(self):
+        """Check if the log file needs to be rotated based on the number of lines"""
+        if not os.path.exists(self.path):
+            return False
+
+        with open(self.path, 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+            return len(lines) >= self.rotation_size
 
     def rotate(self):
         """Rotate the log file"""
