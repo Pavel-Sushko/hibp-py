@@ -74,8 +74,9 @@ def write_breach(user, breach):
         new_breach = True
         users[user].append(breach['Name'])
 
-    with open(USERS_FILE, 'w', encoding='utf-8') as f:
-        json.dump(users, f, sort_keys=True)
+    if new_breach:
+        with open(USERS_FILE, 'w', encoding='utf-8') as f:
+            json.dump(users, f, sort_keys=True)
 
     if os.path.isfile(BREACHES_FILE):
         with open(BREACHES_FILE, 'r', encoding='utf-8') as f:
