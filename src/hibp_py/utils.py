@@ -62,9 +62,13 @@ class Logger:
         # Rename the existing log files in reverse order (9 -> 10, 8 -> 9, etc.)
         for i in range(9, -1, -1):
             path = f'{file_path_no_ext}{i > 0 and f".{i}" or ""}.log'
+            new_path = f'{file_path_no_ext}.{i + 1}.log'
 
             if os.path.exists(path):
-                os.rename(path, f'{file_path_no_ext}.{i + 1}.log')
+                if new_path == self.path:
+                    os.remove(new_path)
+
+                os.rename(path, new_path)
 
         # Create a new empty log file after rotation
         with open(self.path, 'w', encoding='utf-8') as f:
