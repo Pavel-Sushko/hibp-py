@@ -65,7 +65,7 @@ class Logger:
             new_path = f'{file_path_no_ext}.{i + 1}.log'
 
             if os.path.exists(path):
-                if new_path == self.path:
+                if os.path.exists(new_path):
                     os.remove(new_path)
 
                 os.rename(path, new_path)
