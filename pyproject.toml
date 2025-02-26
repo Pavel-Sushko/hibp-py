@@ -30,3 +30,6 @@ classifiers = [
 [project.urls]
 homepage = "https://github.com/Pavel-Sushko/hibp-py"
 issues = "https://github.com/Pavel-Sushko/hibp-py/issues"
+
+[project.scripts]
+hibp-py = "hibp_py:main"
